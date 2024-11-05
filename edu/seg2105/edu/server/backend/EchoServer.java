@@ -22,6 +22,9 @@ public class EchoServer extends AbstractServer
 {
   //Class variables *************************************************
   
+   /**
+	* The key to access login ID values.
+	*/
 	String loginKey = "loginID";
 	
   /**
@@ -43,6 +46,7 @@ public class EchoServer extends AbstractServer
    * Constructs an instance of the echo server.
    *
    * @param port The port number to connect on.
+   * @param serverUI The interface type variable.
    */
   public EchoServer(int port, ChatIF serverUI) 
   {
@@ -88,6 +92,11 @@ public class EchoServer extends AbstractServer
     }
   }
   
+  /**
+   * This method handles all data coming from the UI            
+   *
+   * @param message The message from the UI.    
+   */
   public void handleMessageFromServerUI(String message){
 	  try{
 		  if (message.startsWith("#")) {
@@ -102,7 +111,12 @@ public class EchoServer extends AbstractServer
 	    }
 	  
   }
-
+  
+  	/**
+  	 * This method handles command messages (starting with #)            
+  	 *
+  	 * @param command The command message from the UI.    
+  	 */
 	private void handleCommand(String command) throws IOException {
 		 if (command.equals("#quit")) {
 			 close();
@@ -136,6 +150,7 @@ public class EchoServer extends AbstractServer
    * This method overrides the one in the superclass.  Called
    * when the server starts listening for connections.
    */
+  @Override
   protected void serverStarted()
   {
     System.out.println
@@ -146,6 +161,7 @@ public class EchoServer extends AbstractServer
    * This method overrides the one in the superclass.  Called
    * when the server stops listening for connections.
    */
+  @Override
   protected void serverStopped()
   {
     System.out.println

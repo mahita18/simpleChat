@@ -36,6 +36,7 @@ public class ChatClient extends AbstractClient
   /**
    * Constructs an instance of the chat client.
    *
+   * @param loginID The login ID for client.
    * @param host The server to connect to.
    * @param port The port number to connect on.
    * @param clientUI The interface type variable.
@@ -89,6 +90,11 @@ public class ChatClient extends AbstractClient
     }
   }
   
+  /**
+   * This method handles command messages (starting with #)            
+   *
+   * @param command The command message from the UI.    
+   */
   private void handleCommand(String command) throws IOException {
 	  if (command.equals("#quit")) {
 		  quit();
